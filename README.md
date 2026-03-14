@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dumbathon: BUNKR Survival Simulator
+
+A retro-styled, post-apocalyptic web experience built with Next.js and Tailwind CSS.
+This project simulates a terrifying survival bunker log system from the late 90s, complete with terrifying sign-up trials, interactive puzzles, and aggressively distracting retro advertisements.
+
+## Features
+- **Retro Login Terminal (`/sign-in`)**: A 1999-style hacker interface that deliberately rejects you, forcing you to the trial of the sign-up page.
+- **Immersive Auth Flow (`/sign-up`)**: A multi-step psychological test featuring jump scares, interactive torchlights tracking your mouse, and ambient horror audio.
+- **The BUNKR Dashboard (`/bunkr`)**: A pure 90s HTML/CSS experience running out of a raw HTML file served via Next.js. Features marquee text, a folder trap mini-game, and simulated obnoxious pop-up ads for survival gear.
+- **Dynamic Theming**: Swap between blinding light mode and classic dark mode on the fly during the trial.
+
+## Tech Stack
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- Raw 90s HTML/CSS/JavaScript (for the BUNKR core)
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   ```bash
+   bun install
+   ```
+2. Run the development server:
+   ```bash
+   bun dev
+   ```
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Documentation and Walkthrough
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Check out the [BUNKR Survival Guide](BUNKR_SURVIVAL_GUIDE.md) for a complete walkthrough of how to navigate the website, trigger the hidden sequences, and find its secrets.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributors
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A huge thanks to the developers who have contributed to the Bunker Simulation:
 
-## Learn More
+* [@Aryan-202 (Aryan Vishwakarma)](https://github.com/Aryan-202)
+* [@Death-Desu (KP)](https://github.com/Death-Desu)
+* [@LearnerGamer (Vedant Harane)](https://github.com/LearnerGamer)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how you can help, and please review our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).

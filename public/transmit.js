@@ -41,38 +41,38 @@
                 currentTransmitClicks++;
                 
                 if (currentTransmitClicks >= transmitClicksRequired) {
-                    // Minigame won - log 'transmitted'
-                    transmitActive = false;
-                    
-                    // Reset styling
-                    transmitBtn.style.position = "static";
-                    transmitBtn.innerText = "TRANSMIT";
-                    transmitBtn.style.left = "auto";
-                    transmitBtn.style.top = "auto";
-                    transmitBtn.style.transform = "none";
-                    transmitBtn.style.width = "100%";
-                    
-                    // Clear form
-                    titleInput.value = "";
-                    categoryInput.value = "";
-                    editorInput.value = "";
-                    
-                    // Flash success message
-                    if (flashMessage) {
-                        flashMessage.innerHTML = "LOG TRANSMITTED. PROBABLY INTERCEPTED. GOOD LUCK.";
-                        flashMessage.classList.add('active');
-                        setTimeout(() => { 
-                            flashMessage.classList.remove('active'); 
-                            flashMessage.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; 
-                        }, 3000);
-                    } else {
-                        alert("LOG TRANSMITTED.");
-                    }
-                    
+                    // Minigame won - Redirect to final story page
+                    window.location.href = '/story';
                 } else {
                     // Proceed to next level of annoyance
                     relocateButton();
                     updateButtonText();
+                    
+                    // Exponential shake math 
+                    // e.g. clicks=1 -> multiplier ~1.2. clicks=19 -> multiplier ~15.
+                    const shakeIntensity = Math.pow(1.15, currentTransmitClicks);
+                    const shakeSpeed = Math.min(3, 1 + (currentTransmitClicks * 0.1)); // Speeds up the animation slightly
+                    
+                    // Calculate a hotter red background color exponentially
+                    // Start at dark camo #1a1e15 (rgb 26, 30, 21), ends near bright red #ff0000
+                    const redVal = Math.min(255, 26 + (Math.pow(1.3, currentTransmitClicks) * 2));
+                    const otherVal = Math.max(0, 30 - (currentTransmitClicks * 2));
+                    const bgColor = `rgb(${redVal}, ${otherVal}, ${otherVal})`;
+                    
+                    // Apply to body
+                    document.body.style.setProperty('--shake-intensity', shakeIntensity);
+                    document.body.style.setProperty('--shake-speed', shakeSpeed);
+                    document.body.style.setProperty('--shake-bg', bgColor);
+                    
+                    document.body.classList.add('shake-screen');
+                    
+                    setTimeout(() => {
+                        document.body.classList.remove('shake-screen');
+                        // Restore body to default
+                        document.body.style.removeProperty('--shake-intensity');
+                        document.body.style.removeProperty('--shake-speed');
+                        document.body.style.removeProperty('--shake-bg');
+                    }, 400 + (currentTransmitClicks * 10)); // Shake lasts slightly longer each time
                 }
             }
         });

@@ -398,6 +398,26 @@
             100% { clip: rect(65px, 9999px, 54px, 0); }
         }
 
+        @keyframes screenShake {
+            0% { transform: translate(calc(1px * var(--shake-intensity, 1)), calc(1px * var(--shake-intensity, 1))) rotate(0deg); }
+            10% { transform: translate(calc(-1px * var(--shake-intensity, 1)), calc(-2px * var(--shake-intensity, 1))) rotate(calc(-1deg * var(--shake-intensity, 1))); }
+            20% { transform: translate(calc(-3px * var(--shake-intensity, 1)), 0px) rotate(calc(1deg * var(--shake-intensity, 1))); }
+            30% { transform: translate(calc(3px * var(--shake-intensity, 1)), calc(2px * var(--shake-intensity, 1))) rotate(0deg); }
+            40% { transform: translate(calc(1px * var(--shake-intensity, 1)), calc(-1px * var(--shake-intensity, 1))) rotate(calc(1deg * var(--shake-intensity, 1))); }
+            50% { transform: translate(calc(-1px * var(--shake-intensity, 1)), calc(2px * var(--shake-intensity, 1))) rotate(calc(-1deg * var(--shake-intensity, 1))); }
+            60% { transform: translate(calc(-3px * var(--shake-intensity, 1)), calc(1px * var(--shake-intensity, 1))) rotate(0deg); }
+            70% { transform: translate(calc(3px * var(--shake-intensity, 1)), calc(1px * var(--shake-intensity, 1))) rotate(calc(-1deg * var(--shake-intensity, 1))); }
+            80% { transform: translate(calc(-1px * var(--shake-intensity, 1)), calc(-1px * var(--shake-intensity, 1))) rotate(calc(1deg * var(--shake-intensity, 1))); }
+            90% { transform: translate(calc(1px * var(--shake-intensity, 1)), calc(2px * var(--shake-intensity, 1))) rotate(0deg); }
+            100% { transform: translate(calc(1px * var(--shake-intensity, 1)), calc(-2px * var(--shake-intensity, 1))) rotate(calc(-1deg * var(--shake-intensity, 1))); }
+        }
+
+        body.shake-screen {
+            animation: screenShake calc(0.4s / var(--shake-speed, 1)) infinite;
+            background-color: var(--shake-bg, #1a1e15); /* Fallback to original */
+            background-image: none !important; /* Force remove the camo pattern when shaking heavily */
+        }
+
         .construction-gif {
             display: block;
             margin: 20px auto;
@@ -1487,6 +1507,8 @@
         let isClosable = Math.random() > 0.5;
         let timeRemaining = 15;
         
+        let timerContent = isClosable ? "MANUAL CLOSE" : `CLOSING IN: ${timeRemaining}s`;
+        
         box.innerHTML = `
             <div class="ad-titlebar">
                 <span>${ad.company}</span>
@@ -1498,7 +1520,7 @@
                 <div class="ad-tagline">${ad.tagline}</div>
                 <div class="ad-fineprint">${ad.fineprint}</div>
                 <div class="ad-footer">
-                    <div class="ad-timer">CLOSING IN: ${timeRemaining}s</div>
+                    <div class="ad-timer">${timerContent}</div>
                     <button class="beveled skip-btn" style="font-size: 1rem; padding: 2px 8px;">SKIP AD ▶</button>
                 </div>
             </div>
@@ -1516,18 +1538,20 @@
             window.open('gifs/WhatsApp%20Video%202026-03-14%20at%201.01.46%20PM.mp4', '_blank');
         };
         
-        let timerEl = box.querySelector('.ad-timer');
-        let interval = setInterval(() => {
-            timeRemaining--;
-            if (timeRemaining <= 0) {
-                clearInterval(interval);
-                removeAd(box);
-            } else {
-                timerEl.innerText = `CLOSING IN: ${timeRemaining}s`;
-            }
-        }, 1000);
+        if (!isClosable) {
+            let timerEl = box.querySelector('.ad-timer');
+            let interval = setInterval(() => {
+                timeRemaining--;
+                if (timeRemaining <= 0) {
+                    clearInterval(interval);
+                    removeAd(box);
+                } else {
+                    timerEl.innerText = `CLOSING IN: ${timeRemaining}s`;
+                }
+            }, 1000);
+            box.intervalId = interval;
+        }
         
-        box.intervalId = interval;
         document.getElementById('ad-overlay').appendChild(box);
     }
     

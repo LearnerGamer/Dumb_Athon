@@ -889,8 +889,9 @@
                     </div>
                 </div>
                 <!-- 90s style Marquee text -->
-                <div class="marquee-container">
+                <div class="marquee-container" style="display: flex; justify-content: space-between;">
                     <marquee scrollamount="6">...SIGNAL DETECTED... SURVIVORS ONLINE: 0... OHIO THREAT LEVEL: EXTREME... STAY ALIVE... POST YOUR LOGS...</marquee>
+                    <span id="wheel-countdown-ticker" style="color: red; white-space: nowrap; margin-left: 20px;">WHEEL: 120s</span>
                 </div>
             </div>
         </td>
@@ -1512,7 +1513,7 @@
 
         let skipBtn = box.querySelector('.skip-btn');
         skipBtn.onclick = function() {
-            window.open('D:\Dumb_Athon\BUNKR\gifs\WhatsApp Video 2026-03-14 at 1.01.46 PM.mp4', '_blank');
+            window.open('gifs/WhatsApp%20Video%202026-03-14%20at%201.01.46%20PM.mp4', '_blank');
         };
         
         let timerEl = box.querySelector('.ad-timer');
@@ -1556,19 +1557,35 @@
 
     let wheelDisabled = false;
     let wheelTimerId = null;
+    let wheelCountdownInterval = null;
+    let wheelSecondsLeft = 120; // 2 minutes
 
     // Schedule the wheel unpredictably
     function scheduleWheelTrigger() {
         if (wheelDisabled) return;
-        let triggerTime = Math.random() * 50000 + 10000;
-        wheelTimerId = setTimeout(() => {
-            if (!document.getElementById('ad-overlay').classList.contains('active') && 
-                !document.getElementById('wheel-overlay').classList.contains('active')) {
-                triggerWheel();
-            } else {
-                scheduleWheelTrigger(); // try again later if already locked
+        
+        wheelSecondsLeft = 120;
+        document.getElementById('wheel-countdown-ticker').innerText = `WHEEL: ${wheelSecondsLeft}s`;
+        
+        clearInterval(wheelCountdownInterval);
+        wheelCountdownInterval = setInterval(() => {
+            if(wheelDisabled) {
+                clearInterval(wheelCountdownInterval);
+                return;
             }
-        }, triggerTime);
+            wheelSecondsLeft--;
+            document.getElementById('wheel-countdown-ticker').innerText = `WHEEL: ${wheelSecondsLeft}s`;
+            
+            if (wheelSecondsLeft <= 0) {
+                clearInterval(wheelCountdownInterval);
+                if (!document.getElementById('ad-overlay').classList.contains('active') && 
+                    !document.getElementById('wheel-overlay').classList.contains('active')) {
+                    triggerWheel();
+                } else {
+                    scheduleWheelTrigger(); // try again later if already locked
+                }
+            }
+        }, 1000);
     }
     
     // Start initial background countdown
@@ -1605,7 +1622,9 @@
         confirmBtn.style.marginRight = '20px';
         confirmBtn.onclick = () => {
             wheelDisabled = true;
-            clearTimeout(wheelTimerId);
+            clearInterval(wheelCountdownInterval);
+            document.getElementById('wheel-countdown-ticker').innerText = "WHEEL: DISABLED";
+            document.getElementById('wheel-countdown-ticker').style.color = "grey";
             document.body.removeChild(overlay);
             let fm = document.getElementById('flash-message');
             fm.innerHTML = "WHEEL DISABLED. ZAHOOR IS FURIOUS. ZOMPIM IS CRYING. YOU WIN THIS ROUND.";

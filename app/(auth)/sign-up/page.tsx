@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import assets from "../../../public/assets";
 
 export default function SignUpPage() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState<'fake_form' | 'human_confirmed' | 'real_form'>('human_confirmed');
   const [clicks, setClicks] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -135,6 +137,7 @@ export default function SignUpPage() {
   const handleRealSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert(`Welcome to the darkness, ${username}.`);
+    router.push('/bunkr');
   };
 
   return (

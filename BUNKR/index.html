@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    
+
     <style>
         body {
-            background-color: #1a1e15; /* Dark camo ground */
+            background-color: #1a1e15;
+            /* Dark camo ground */
             /* Simulated dark camo/burnt texture via CSS repeating gradients */
-            background-image: 
-                repeating-linear-gradient(45deg, #161811 25%, transparent 25%, transparent 75%, #161811 75%, #161811), 
+            background-image:
+                repeating-linear-gradient(45deg, #161811 25%, transparent 25%, transparent 75%, #161811 75%, #161811),
                 repeating-linear-gradient(45deg, #161811 25%, #1a1e15 25%, #1a1e15 75%, #161811 75%, #161811);
             background-position: 0 0, 10px 10px;
             background-size: 20px 20px;
-            
+
             color: #c0c0c0;
             font-family: "Courier New", Courier, monospace;
             margin: 0;
             padding: 20px;
         }
 
-        h1, h2, h3, h4, .pixel-text {
+        h1,
+        h2,
+        h3,
+        h4,
+        .pixel-text {
             font-family: 'VT323', monospace;
             margin: 0;
             text-transform: uppercase;
         }
 
-        .yellow { color: #c4a000; }
-        .red { color: #8a0303; }
-        .olive { color: #3b4224; }
-        .grey { color: #c0c0c0; }
+        .yellow {
+            color: #c4a000;
+        }
+
+        .red {
+            color: #8a0303;
+        }
+
+        .olive {
+            color: #3b4224;
+        }
+
+        .grey {
+            color: #c0c0c0;
+        }
 
         .beveled {
             background-color: #c0c0c0;
@@ -50,7 +67,8 @@
             box-shadow: 2px 2px 0 #000;
         }
 
-        .beveled:active, .beveled.pressed {
+        .beveled:active,
+        .beveled.pressed {
             border-color: #808080 #ffffff #ffffff #808080;
             padding: 7px 13px 3px 17px;
             box-shadow: 1px 1px 0 #000;
@@ -74,7 +92,7 @@
             border: 6px solid;
             border-color: #ffffff #808080 #808080 #ffffff;
             color: black;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
         }
 
         .layout-table td {
@@ -108,7 +126,7 @@
             gap: 8px;
             flex-wrap: wrap;
         }
-        
+
         .nav-links .beveled {
             font-size: 1.4rem;
         }
@@ -144,7 +162,8 @@
 
         /* Main Content Area */
         .main-content-area {
-            background-color: #1a1b16; /* very dark olive */
+            background-color: #1a1b16;
+            /* very dark olive */
             padding: 20px;
             color: #c0c0c0;
         }
@@ -208,7 +227,9 @@
         }
 
         @keyframes blinker {
-            50% { opacity: 0; }
+            50% {
+                opacity: 0;
+            }
         }
 
         /* Posts */
@@ -248,7 +269,8 @@
         .write-entry textarea {
             width: 100%;
             height: 150px;
-            background-color: #dcdcdc; /* slightly darker grey */
+            background-color: #dcdcdc;
+            /* slightly darker grey */
             border: 4px inset #808080;
             font-family: "Courier New", Courier, monospace;
             font-size: 1.1rem;
@@ -259,7 +281,8 @@
             color: #000;
         }
 
-        .write-entry input[type="text"], .write-entry select {
+        .write-entry input[type="text"],
+        .write-entry select {
             background-color: #dcdcdc;
             border: 4px inset #808080;
             font-family: "Courier New", Courier, monospace;
@@ -297,7 +320,7 @@
             text-decoration: none;
             margin: 0 5px;
         }
-        
+
         .footer-links a:hover {
             color: #fff;
             text-decoration: underline;
@@ -313,12 +336,13 @@
             font-size: 1.5rem;
         }
 
-        .badges img, .badge-placeholder {
+        .badges img,
+        .badge-placeholder {
             border: 3px outset #c0c0c0;
             margin-left: 5px;
             display: inline-block;
         }
-        
+
         .badge-placeholder {
             background-color: #000080;
             color: white;
@@ -328,7 +352,8 @@
         }
 
         .hidden-detector {
-            color: #1a1a1a; /* Barely visible against black */
+            color: #1a1a1a;
+            /* Barely visible against black */
             font-size: 0.8rem;
             cursor: default;
         }
@@ -345,14 +370,23 @@
         }
 
         @keyframes flicker {
-            0% { transform: scale(1) translate(1px, 1px); opacity: 1; }
-            100% { transform: scale(1.2) translate(-1px, -1px); opacity: 0.8; }
+            0% {
+                transform: scale(1) translate(1px, 1px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.2) translate(-1px, -1px);
+                opacity: 0.8;
+            }
         }
 
         .glitch {
             position: relative;
         }
-        .glitch::before, .glitch::after {
+
+        .glitch::before,
+        .glitch::after {
             content: "BUNKR";
             position: absolute;
             top: 0;
@@ -361,41 +395,105 @@
             height: 100%;
             background: transparent;
         }
+
         .glitch::before {
             left: 3px;
             text-shadow: -2px 0 red;
             clip: rect(10px, 900px, 30px, 0);
             animation: glitch-anim 2s infinite linear alternate-reverse;
         }
+
         .glitch::after {
             left: -3px;
             text-shadow: -2px 0 blue;
             clip: rect(40px, 900px, 60px, 0);
             animation: glitch-anim 3s infinite linear alternate-reverse;
         }
-        
+
         @keyframes glitch-anim {
-            0% { clip: rect(15px, 9999px, 86px, 0); }
-            5% { clip: rect(69px, 9999px, 7px, 0); }
-            10% { clip: rect(44px, 9999px, 59px, 0); }
-            15% { clip: rect(14px, 9999px, 17px, 0); }
-            20% { clip: rect(78px, 9999px, 67px, 0); }
-            25% { clip: rect(35px, 9999px, 81px, 0); }
-            30% { clip: rect(12px, 9999px, 45px, 0); }
-            35% { clip: rect(98px, 9999px, 23px, 0); }
-            40% { clip: rect(56px, 9999px, 98px, 0); }
-            45% { clip: rect(23px, 9999px, 12px, 0); }
-            50% { clip: rect(89px, 9999px, 78px, 0); }
-            55% { clip: rect(45px, 9999px, 34px, 0); }
-            60% { clip: rect(67px, 9999px, 56px, 0); }
-            65% { clip: rect(12px, 9999px, 90px, 0); }
-            70% { clip: rect(21px, 9999px, 43px, 0); }
-            75% { clip: rect(78px, 9999px, 21px, 0); }
-            80% { clip: rect(34px, 9999px, 65px, 0); }
-            85% { clip: rect(56px, 9999px, 87px, 0); }
-            90% { clip: rect(89px, 9999px, 10px, 0); }
-            95% { clip: rect(10px, 9999px, 32px, 0); }
-            100% { clip: rect(65px, 9999px, 54px, 0); }
+            0% {
+                clip: rect(15px, 9999px, 86px, 0);
+            }
+
+            5% {
+                clip: rect(69px, 9999px, 7px, 0);
+            }
+
+            10% {
+                clip: rect(44px, 9999px, 59px, 0);
+            }
+
+            15% {
+                clip: rect(14px, 9999px, 17px, 0);
+            }
+
+            20% {
+                clip: rect(78px, 9999px, 67px, 0);
+            }
+
+            25% {
+                clip: rect(35px, 9999px, 81px, 0);
+            }
+
+            30% {
+                clip: rect(12px, 9999px, 45px, 0);
+            }
+
+            35% {
+                clip: rect(98px, 9999px, 23px, 0);
+            }
+
+            40% {
+                clip: rect(56px, 9999px, 98px, 0);
+            }
+
+            45% {
+                clip: rect(23px, 9999px, 12px, 0);
+            }
+
+            50% {
+                clip: rect(89px, 9999px, 78px, 0);
+            }
+
+            55% {
+                clip: rect(45px, 9999px, 34px, 0);
+            }
+
+            60% {
+                clip: rect(67px, 9999px, 56px, 0);
+            }
+
+            65% {
+                clip: rect(12px, 9999px, 90px, 0);
+            }
+
+            70% {
+                clip: rect(21px, 9999px, 43px, 0);
+            }
+
+            75% {
+                clip: rect(78px, 9999px, 21px, 0);
+            }
+
+            80% {
+                clip: rect(34px, 9999px, 65px, 0);
+            }
+
+            85% {
+                clip: rect(56px, 9999px, 87px, 0);
+            }
+
+            90% {
+                clip: rect(89px, 9999px, 10px, 0);
+            }
+
+            95% {
+                clip: rect(10px, 9999px, 32px, 0);
+            }
+
+            100% {
+                clip: rect(65px, 9999px, 54px, 0);
+            }
         }
 
         .construction-gif {
@@ -403,18 +501,16 @@
             margin: 20px auto;
             width: 180px;
             height: 25px;
-            background: repeating-linear-gradient(
-                45deg,
-                #ffff00,
-                #ffff00 10px,
-                #000000 10px,
-                #000000 20px
-            );
+            background: repeating-linear-gradient(45deg,
+                    #ffff00,
+                    #ffff00 10px,
+                    #000000 10px,
+                    #000000 20px);
             border: 3px solid #808080;
             box-shadow: 2px 2px 0 #000;
             position: relative;
         }
-        
+
         .construction-gif::after {
             content: "UNDER CONSTRUCTION";
             position: absolute;
@@ -431,6 +527,7 @@
         .content-section {
             display: none;
         }
+
         .content-section.active {
             display: block;
         }
@@ -445,6 +542,7 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+
         .trap-key.found {
             color: #c4a000;
             text-shadow: 0 0 20px #c4a000, 0 0 30px #ffffff;
@@ -477,12 +575,12 @@
             font-family: 'VT323', monospace;
             color: #8a0303;
         }
-        
+
         .wheel-message h2 {
             font-size: 3rem;
             text-shadow: 2px 2px #fff;
         }
-        
+
         .wheel-message p {
             font-size: 1.5rem;
             color: #c4a000;
@@ -501,16 +599,14 @@
             border-radius: 50%;
             border: 10px solid #c0c0c0;
             box-sizing: border-box;
-            background: conic-gradient(
-                #3b4224 0deg 45deg, 
-                #8a0303 45deg 90deg, 
-                #3b4224 90deg 135deg, 
-                #8a0303 135deg 180deg, 
-                #3b4224 180deg 225deg, 
-                #8a0303 225deg 270deg, 
-                #3b4224 270deg 315deg, 
-                #8a0303 315deg 360deg
-            );
+            background: conic-gradient(#3b4224 0deg 45deg,
+                    #8a0303 45deg 90deg,
+                    #3b4224 90deg 135deg,
+                    #8a0303 135deg 180deg,
+                    #3b4224 180deg 225deg,
+                    #8a0303 225deg 270deg,
+                    #3b4224 270deg 315deg,
+                    #8a0303 315deg 360deg);
             position: relative;
             transition: transform 4s cubic-bezier(0.1, 0.7, 0.1, 1);
             box-shadow: 0 0 30px #000;
@@ -532,14 +628,37 @@
         }
 
         /* Calculated positions for the 8 segments based on radius */
-        .n1 { transform: translate(-50%, -50%) rotate(22.5deg) translate(0, -140px); }
-        .n2 { transform: translate(-50%, -50%) rotate(67.5deg) translate(0, -140px) rotate(-45deg); }
-        .n3 { transform: translate(-50%, -50%) rotate(112.5deg) translate(0, -140px) rotate(-90deg); }
-        .n5 { transform: translate(-50%, -50%) rotate(157.5deg) translate(0, -140px) rotate(-135deg); }
-        .n8 { transform: translate(-50%, -50%) rotate(202.5deg) translate(0, -140px) rotate(-180deg); }
-        .n10 { transform: translate(-50%, -50%) rotate(247.5deg) translate(0, -140px) rotate(-225deg); }
-        .n15 { transform: translate(-50%, -50%) rotate(292.5deg) translate(0, -140px) rotate(-270deg); }
-        .n20 { transform: translate(-50%, -50%) rotate(337.5deg) translate(0, -140px) rotate(-315deg); }
+        .n1 {
+            transform: translate(-50%, -50%) rotate(22.5deg) translate(0, -140px);
+        }
+
+        .n2 {
+            transform: translate(-50%, -50%) rotate(67.5deg) translate(0, -140px) rotate(-45deg);
+        }
+
+        .n3 {
+            transform: translate(-50%, -50%) rotate(112.5deg) translate(0, -140px) rotate(-90deg);
+        }
+
+        .n5 {
+            transform: translate(-50%, -50%) rotate(157.5deg) translate(0, -140px) rotate(-135deg);
+        }
+
+        .n8 {
+            transform: translate(-50%, -50%) rotate(202.5deg) translate(0, -140px) rotate(-180deg);
+        }
+
+        .n10 {
+            transform: translate(-50%, -50%) rotate(247.5deg) translate(0, -140px) rotate(-225deg);
+        }
+
+        .n15 {
+            transform: translate(-50%, -50%) rotate(292.5deg) translate(0, -140px) rotate(-270deg);
+        }
+
+        .n20 {
+            transform: translate(-50%, -50%) rotate(337.5deg) translate(0, -140px) rotate(-315deg);
+        }
 
         .wheel-pointer {
             position: absolute;
@@ -591,8 +710,13 @@
         }
 
         @keyframes pulse-glow {
-            from { text-shadow: 0 0 5px #c4a000; }
-            to { text-shadow: 0 0 20px #fff, 0 0 30px #c4a000; }
+            from {
+                text-shadow: 0 0 5px #c4a000;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #c4a000;
+            }
         }
 
         /* Chaos Popup Windows */
@@ -603,7 +727,7 @@
             border: 6px solid;
             border-color: #ffffff #808080 #808080 #ffffff;
             color: black;
-            box-shadow: 5px 5px 25px rgba(0,0,0,0.8);
+            box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.8);
             z-index: 10000;
             display: none;
         }
@@ -744,7 +868,7 @@
             border: 6px solid;
             border-color: #ffffff #808080 #808080 #ffffff;
             color: black;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
             position: relative;
         }
 
@@ -770,6 +894,7 @@
             font-family: arial, sans-serif;
             font-size: 0.9rem;
         }
+
         .ad-close-btn:active {
             border-color: #808080 #ffffff #ffffff #808080;
         }
@@ -850,6 +975,7 @@
             box-shadow: 0 0 20px red;
             pointer-events: none;
         }
+
         .flash-message.active {
             display: block;
         }
@@ -866,303 +992,348 @@
             color: yellow;
             transition: opacity 0.2s;
         }
+
         #recovery-icon:hover {
             opacity: 1;
         }
     </style>
 </head>
+
 <body>
 
-<table class="layout-table">
-    <tr>
-        <td colspan="2" style="padding: 0; background-color: transparent; border: none;">
-            <div class="navbar-container">
-                <div class="navbar">
-                    <div class="logo pixel-text glitch">BUNKR</div>
-                    <div class="nav-links">
-                        <a href="#" class="beveled">FEED</a>
-                        <a href="#" class="beveled">MY POSTS</a>
-                        <a href="#" class="beveled">FOLLOWERS</a>
-                        <a href="#" class="beveled">PROFILE</a>
-                        <a href="#" class="beveled">INBOX</a>
-                        <a href="#" class="beveled" onclick="alert('THERE IS NO HELP')">HELP</a>
-                    </div>
-                </div>
-                <!-- 90s style Marquee text -->
-                <div class="marquee-container" style="display: flex; justify-content: space-between;">
-                    <marquee scrollamount="6">...SIGNAL DETECTED... SURVIVORS ONLINE: 0... OHIO THREAT LEVEL: EXTREME... STAY ALIVE... POST YOUR LOGS...</marquee>
-                    <span id="wheel-countdown-ticker" style="color: red; white-space: nowrap; margin-left: 20px;">WHEEL: 120s</span>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <!-- Sidebar -->
-        <td class="sidebar">
-            <h3 class="pixel-text yellow" style="font-size: 1.8rem;">FIELD FOLDERS</h3>
-            <hr class="ugly-hr">
-            <button class="beveled sidebar-folder">📁 MISSION LOGS</button>
-            <button class="beveled sidebar-folder">📁 SUPPLY RECORDS</button>
-            <button class="beveled sidebar-folder">📁 PERSONNEL FILES</button>
-            <!-- The Trap Trigger -->
-            <button class="beveled sidebar-folder" onclick="openFolderLevel(1)">📁 FOLDER</button>
-            
-            <br>
-            <!-- Dev Wheel Trigger -->
-            <button class="beveled sidebar-folder blink" style="color: purple; border-color: purple; margin-bottom: 20px;" onclick="triggerWheel()">[DEV] TRIGGER WHEEL</button>
-            <br>
-            <div class="construction-gif" title="UNDER CONSTRUCTION"></div>
-            
-            <hr class="ugly-hr">
-            <p style="font-size: 0.9rem; margin-top: 20px; line-height: 1.5;">
-                <span style="background-color: #8a0303; color: white;">SYS_MSG:</span><br>
-                DISK SPACE LOW.<br>
-                DEFRAG RECOMMENDED.<br>
-                <span class="blink yellow">AWAITING INPUT...</span>
-            </p>
-        </td>
-        
-        <!-- Main Content area -->
-        <td class="main-content-area">
-            
-            <!-- DEFAULT HOME CONTENT -->
-            <div id="content-home" class="content-section active">
-                
-                <div class="hero-banner">
-                    <h1 class="pixel-text">YOU ARE ALIVE. POST ABOUT IT.</h1>
-                    <p>Document your survival. Share your suffering. Gain followers.</p>
-                    <div class="hero-actions">
-                        <button class="beveled">WRITE ENTRY</button>
-                        <button class="beveled">VIEW FEED</button>
-                        <span class="blink red pixel-text new-badge">NEW!</span>
-                    </div>
-                </div>
-
-                <div class="panel">
-                    <h2 class="pixel-text" style="border-bottom: 4px solid #808080; padding-bottom: 10px; margin-bottom: 20px; font-size: 2rem;">
-                        <span class="flame-gif"></span> RECENT POSTS <span class="flame-gif"></span>
-                    </h2>
-                    
-                    <!-- Placeholder Card 1 -->
-                    <div class="post-card">
-                        <div class="post-header">
-                            <span class="username">user_unknown</span>
-                            <span class="timestamp">1997-08-29 02:14 AM</span>
-                        </div>
-                        <div class="post-content">
-                            <!-- Empty content -->
-                        </div>
-                        <div class="post-actions">
-                            <button class="beveled">LIKE (0)</button>
-                            <button class="beveled">REPLY</button>
+    <table class="layout-table">
+        <tr>
+            <td colspan="2" style="padding: 0; background-color: transparent; border: none;">
+                <div class="navbar-container">
+                    <div class="navbar">
+                        <div class="logo pixel-text glitch">BUNKR</div>
+                        <div class="nav-links">
+                            <a href="#" class="beveled">FEED</a>
+                            <a href="#" class="beveled">MY POSTS</a>
+                            <a href="#" class="beveled">FOLLOWERS</a>
+                            <a href="#" class="beveled">PROFILE</a>
+                            <a href="#" class="beveled">INBOX</a>
+                            <a href="#" class="beveled" onclick="alert('THERE IS NO HELP')">HELP</a>
                         </div>
                     </div>
-
-                    <!-- Placeholder Card 2 -->
-                    <div class="post-card">
-                        <div class="post-header">
-                            <span class="username">survivor_99</span>
-                            <span class="timestamp">1997-08-28 23:42 PM</span>
-                        </div>
-                        <div class="post-content">
-                            <!-- Empty content -->
-                        </div>
-                        <div class="post-actions">
-                            <button class="beveled">LIKE (0)</button>
-                            <button class="beveled">REPLY</button>
-                        </div>
-                    </div>
-
-                     <!-- Placeholder Card 3 -->
-                    <div class="post-card">
-                        <div class="post-header">
-                            <span class="username">ohio_resident</span>
-                            <span class="timestamp">1997-08-28 18:05 PM</span>
-                        </div>
-                        <div class="post-content">
-                            <!-- Empty content -->
-                        </div>
-                        <div class="post-actions">
-                            <button class="beveled">LIKE (0)</button>
-                            <button class="beveled">REPLY</button>
-                        </div>
+                    <!-- 90s style Marquee text -->
+                    <div class="marquee-container" style="display: flex; justify-content: space-between;">
+                        <marquee scrollamount="6">...SIGNAL DETECTED... SURVIVORS ONLINE: 0... OHIO THREAT LEVEL:
+                            EXTREME... STAY ALIVE... POST YOUR LOGS...</marquee>
+                        <span id="wheel-countdown-ticker"
+                            style="color: red; white-space: nowrap; margin-left: 20px;">WHEEL: 120s</span>
                     </div>
                 </div>
-
-                <div class="panel write-entry">
-                    <h2 class="pixel-text" style="margin-bottom: 15px; font-size: 2rem;">TRANSMIT YOUR LOG</h2>
-                    <input type="text" placeholder="Entry Title...">
-                    <select>
-                        <option>Select Category...</option>
-                        <option>Status Report / Sighting</option>
-                        <option>Supply Cache</option>
-                        <option>Warning / Hazard</option>
-                        <option>SOS</option>
-                    </select>
-                    <textarea id="journalEditor" placeholder="Write your log here..."></textarea>
-                    <button class="beveled transmit-btn">TRANSMIT</button>
-                </div>
-            </div>
-
-            <!-- FOLDER TRAP LEVELS -->
-            <!-- Level 1 -->
-            <div id="content-folder-1" class="content-section panel">
-                <div class="pixel-text yellow" style="font-size: 1.5rem;">HOME &gt; FOLDER</div>
+            </td>
+        </tr>
+        <tr>
+            <!-- Sidebar -->
+            <td class="sidebar">
+                <h3 class="pixel-text yellow" style="font-size: 1.8rem;">FIELD FOLDERS</h3>
                 <hr class="ugly-hr">
-                <button class="beveled" onclick="goHome()" style="margin-bottom: 20px;">◄ BACK</button>
-                <button class="beveled sidebar-folder" onclick="openFolderLevel(2)" style="width: auto;">📁 another folder</button>
-            </div>
+                <button class="beveled sidebar-folder">📁 MISSION LOGS</button>
+                <button class="beveled sidebar-folder">📁 SUPPLY RECORDS</button>
+                <button class="beveled sidebar-folder">📁 PERSONNEL FILES</button>
+                <!-- The Trap Trigger -->
+                <button class="beveled sidebar-folder" onclick="openFolderLevel(1)">📁 FOLDER</button>
 
-            <!-- Level 2: Slightly glitched -->
-            <div id="content-folder-2" class="content-section panel" style="background-color: #a0a090; filter: contrast(120%);">
-                <div class="pixel-text red" style="font-size: 1.5rem;">HOME &gt; FOLDER &gt; another folder</div>
+                <br>
+                <!-- Dev Wheel Trigger -->
+                <button class="beveled sidebar-folder blink"
+                    style="color: purple; border-color: purple; margin-bottom: 20px;" onclick="triggerWheel()">TRIGGER
+                    WHEEL</button>
+                <br>
+                <div class="construction-gif" title="UNDER CONSTRUCTION"></div>
+
                 <hr class="ugly-hr">
-                <button class="beveled" onclick="openFolderLevel(1)" style="margin-bottom: 20px;">◄ BACK</button>
-                <button class="beveled sidebar-folder" onclick="openFolderLevel(3)" style="width: auto;">📁 why</button>
-            </div>
+                <p style="font-size: 0.9rem; margin-top: 20px; line-height: 1.5;">
+                    <span style="background-color: #8a0303; color: white;">SYS_MSG:</span><br>
+                    DISK SPACE LOW.<br>
+                    DEFRAG RECOMMENDED.<br>
+                    <span class="blink yellow">AWAITING INPUT...</span>
+                </p>
+            </td>
 
-            <!-- Level 3: Desperate -->
-            <div id="content-folder-3" class="content-section panel" style="background-color: #602020; color: white;">
-                <div class="pixel-text yellow blink" style="font-size: 1.5rem;">HOME &gt; FOLDER &gt; another folder &gt; why</div>
-                <hr class="ugly-hr" style="background-color: black; border-color: red black black red;">
-                <button class="beveled" onclick="openFolderLevel(2)" style="margin-bottom: 20px;">◄ BACK</button>
-                <div style="text-align: center; margin: 30px 0;">
-                    <p style="font-family: 'VT323'; font-size: 3rem; text-shadow: 2px 2px #000;">NO DATA FOUND.</p>
+            <!-- Main Content area -->
+            <td class="main-content-area">
+
+                <!-- DEFAULT HOME CONTENT -->
+                <div id="content-home" class="content-section active">
+
+                    <div class="hero-banner">
+                        <h1 class="pixel-text">YOU ARE ALIVE. POST ABOUT IT.</h1>
+                        <p>Document your survival. Share your suffering. Gain followers.</p>
+                        <div class="hero-actions">
+                            <button class="beveled">WRITE ENTRY</button>
+                            <button class="beveled">VIEW FEED</button>
+                            <span class="blink red pixel-text new-badge">NEW!</span>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h2 class="pixel-text"
+                            style="border-bottom: 4px solid #808080; padding-bottom: 10px; margin-bottom: 20px; font-size: 2rem;">
+                            <span class="flame-gif"></span> RECENT POSTS <span class="flame-gif"></span>
+                        </h2>
+
+                        <!-- Placeholder Card 1 -->
+                        <div class="post-card">
+                            <div class="post-header">
+                                <span class="username">user_unknown</span>
+                                <span class="timestamp">1997-08-29 02:14 AM</span>
+                            </div>
+                            <div class="post-content">
+                                <!-- Empty content -->
+                            </div>
+                            <div class="post-actions">
+                                <button class="beveled">LIKE (0)</button>
+                                <button class="beveled">REPLY</button>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder Card 2 -->
+                        <div class="post-card">
+                            <div class="post-header">
+                                <span class="username">survivor_99</span>
+                                <span class="timestamp">1997-08-28 23:42 PM</span>
+                            </div>
+                            <div class="post-content">
+                                <!-- Empty content -->
+                            </div>
+                            <div class="post-actions">
+                                <button class="beveled">LIKE (0)</button>
+                                <button class="beveled">REPLY</button>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder Card 3 -->
+                        <div class="post-card">
+                            <div class="post-header">
+                                <span class="username">ohio_resident</span>
+                                <span class="timestamp">1997-08-28 18:05 PM</span>
+                            </div>
+                            <div class="post-content">
+                                <!-- Empty content -->
+                            </div>
+                            <div class="post-actions">
+                                <button class="beveled">LIKE (0)</button>
+                                <button class="beveled">REPLY</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel write-entry">
+                        <h2 class="pixel-text" style="margin-bottom: 15px; font-size: 2rem;">TRANSMIT YOUR LOG</h2>
+                        <input type="text" placeholder="Entry Title...">
+                        <select>
+                            <option>Select Category...</option>
+                            <option>Status Report / Sighting</option>
+                            <option>Supply Cache</option>
+                            <option>Warning / Hazard</option>
+                            <option>SOS</option>
+                        </select>
+                        <textarea id="journalEditor" placeholder="Write your log here..."></textarea>
+                        <button class="beveled transmit-btn">TRANSMIT</button>
+                    </div>
                 </div>
-                <button class="beveled sidebar-folder" onclick="openFolderLevel(4)" style="width: auto; background-color: #300; color: #fff; border-color: #666 #000 #000 #666;">📁 FINE HERE IS THE KEY 🗝</button>
+
+                <!-- FOLDER TRAP LEVELS -->
+                <!-- Level 1 -->
+                <div id="content-folder-1" class="content-section panel">
+                    <div class="pixel-text yellow" style="font-size: 1.5rem;">HOME &gt; FOLDER</div>
+                    <hr class="ugly-hr">
+                    <button class="beveled" onclick="goHome()" style="margin-bottom: 20px;">◄ BACK</button>
+                    <button class="beveled sidebar-folder" onclick="openFolderLevel(2)" style="width: auto;">📁 another
+                        folder</button>
+                </div>
+
+                <!-- Level 2: Slightly glitched -->
+                <div id="content-folder-2" class="content-section panel"
+                    style="background-color: #a0a090; filter: contrast(120%);">
+                    <div class="pixel-text red" style="font-size: 1.5rem;">HOME &gt; FOLDER &gt; another folder</div>
+                    <hr class="ugly-hr">
+                    <button class="beveled" onclick="openFolderLevel(1)" style="margin-bottom: 20px;">◄ BACK</button>
+                    <button class="beveled sidebar-folder" onclick="openFolderLevel(3)" style="width: auto;">📁
+                        why</button>
+                </div>
+
+                <!-- Level 3: Desperate -->
+                <div id="content-folder-3" class="content-section panel"
+                    style="background-color: #602020; color: white;">
+                    <div class="pixel-text yellow blink" style="font-size: 1.5rem;">HOME &gt; FOLDER &gt; another folder
+                        &gt; why</div>
+                    <hr class="ugly-hr" style="background-color: black; border-color: red black black red;">
+                    <button class="beveled" onclick="openFolderLevel(2)" style="margin-bottom: 20px;">◄ BACK</button>
+                    <div style="text-align: center; margin: 30px 0;">
+                        <p style="font-family: 'VT323'; font-size: 3rem; text-shadow: 2px 2px #000;">NO DATA FOUND.</p>
+                    </div>
+                    <button class="beveled sidebar-folder" onclick="openFolderLevel(4)"
+                        style="width: auto; background-color: #300; color: #fff; border-color: #666 #000 #000 #666;">📁
+                        FINE HERE IS THE KEY 🗝</button>
+                </div>
+
+                <!-- Level 4: The Key -->
+                <div id="content-folder-4" class="content-section panel"
+                    style="background-color: #000; color: #fff; border-color: #444 #111 #111 #444;">
+                    <div class="pixel-text" style="color: #666; font-size: 1.5rem;">HOME &gt; FOLDER &gt; another folder
+                        &gt; why &gt; key</div>
+                    <hr class="ugly-hr" style="border-color: #333 #111 #111 #333; background-color: #222;">
+                    <button class="beveled" onclick="openFolderLevel(3)"
+                        style="background-color: #222; color: #aaa; border-color: #555 #111 #111 #555;">◄ BACK</button>
+
+                    <span class="trap-key" onclick="this.classList.add('found'); disableWheel();">🗝</span>
+
+                    <p style="text-align: center; color: #444;">THERE IS NOTHING ELSE HERE.</p>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Footer sections -->
+    <div class="layout-table" style="border-top: none; padding: 0;">
+        <div class="footer">
+            <div class="visitor-counter">SURVIVORS WHO VISITED: 000347</div>
+            <div style="flex-grow: 1; text-align: center; font-family: 'VT323', monospace; font-size: 1.4rem;">
+                &copy; 1997 BUNKR INDUSTRIES. ALL RIGHTS RESERVED. <br>PROBABLY.
             </div>
-
-            <!-- Level 4: The Key -->
-            <div id="content-folder-4" class="content-section panel" style="background-color: #000; color: #fff; border-color: #444 #111 #111 #444;">
-                <div class="pixel-text" style="color: #666; font-size: 1.5rem;">HOME &gt; FOLDER &gt; another folder &gt; why &gt; key</div>
-                <hr class="ugly-hr" style="border-color: #333 #111 #111 #333; background-color: #222;">
-                <button class="beveled" onclick="openFolderLevel(3)" style="background-color: #222; color: #aaa; border-color: #555 #111 #111 #555;">◄ BACK</button>
-                
-                <span class="trap-key" onclick="this.classList.add('found'); disableWheel();">🗝</span>
-                
-                <p style="text-align: center; color: #444;">THERE IS NOTHING ELSE HERE.</p>
+            <div class="badges">
+                <span class="badge-placeholder">BEST VIEWED IN NETSCAPE</span>
+                <span class="badge-placeholder">800x600</span>
             </div>
-
-        </td>
-    </tr>
-</table>
-
-<!-- Footer sections -->
-<div class="layout-table" style="border-top: none; padding: 0;">
-    <div class="footer">
-        <div class="visitor-counter">SURVIVORS WHO VISITED: 000347</div>
-        <div style="flex-grow: 1; text-align: center; font-family: 'VT323', monospace; font-size: 1.4rem;">
-            &copy; 1997 BUNKR INDUSTRIES. ALL RIGHTS RESERVED. <br>PROBABLY.
         </div>
-        <div class="badges">
-            <span class="badge-placeholder">BEST VIEWED IN NETSCAPE</span>
-            <span class="badge-placeholder">800x600</span>
+
+        <div class="footer" style="background-color: #111; padding: 5px 15px; border: none; font-size: 0.9rem;">
+            <div class="footer-links">
+                <a href="#">About</a> |
+                <a href="#">Contact</a> |
+                <a href="#">Terms</a> |
+                <a href="#">Sitemap</a> |
+                <a href="#">Webmaster</a>
+            </div>
+            <!-- Hidden Signal Detector -->
+            <span class="hidden-detector blink" title="SIGNAL DETECTOR">⚠</span>
         </div>
     </div>
-    
-    <div class="footer" style="background-color: #111; padding: 5px 15px; border: none; font-size: 0.9rem;">
-        <div class="footer-links">
-            <a href="#">About</a> | 
-            <a href="#">Contact</a> | 
-            <a href="#">Terms</a> | 
-            <a href="#">Sitemap</a> | 
-            <a href="#">Webmaster</a>
-        </div>
-        <!-- Hidden Signal Detector -->
-        <span class="hidden-detector blink" title="SIGNAL DETECTOR">⚠</span>
-    </div>
-</div>
 
-<script>
-    // -- WHEEL & CHAOS POPUP LOGIC --
+    <script>
+        // -- WHEEL & CHAOS POPUP LOGIC --
 
-    const wheelSegments = [1, 2, 3, 5, 8, 10, 15, 20];
-    let wheelResult = 0;
-    
-    // Popup data structures
-    const chaosPopupsData = [
-        {
-            id: 'cp-1', title: 'ZRALALA NEWS NETWORK', headline: 'ZRALALERO ZRALALA SPOTTED WEARING SHOES — LOCALS FLEE',
-            article: 'Witnesses report the creature walking upright in sector 4. The shoes were Nike. No one knows how it obtained them. Authorities advise do not ask.',
-            tree: { type: 'root', path: 'C:\\ZRAL', contents: [
-                { name: 'key', type: 'deadend', msg: 'ZRALALERO ATE THE KEY. NOTHING HERE.' }
-            ]}
-        },
-        {
-            id: 'cp-2', title: 'ZOMBARDIRO DAILY', headline: 'ZOMBARDIRO CROCODILO CONDUCTING THIRD AIRSTRIKE THIS WEEK',
-            article: 'The crocodile-aircraft hybrid resumed operations at dawn. Residents are advised to look up. Then look down. Then run. In that order.',
-            tree: { type: 'root', path: 'C:\\ZOMB', contents: [
-                { name: 'key', type: 'deadend', msg: 'ZOMBARDIRO BOMBED THIS FOLDER. NOTHING SURVIVES.' },
-                { name: 'files', type: 'folder', contents: [
-                    { name: 'key', type: 'deadend', msg: 'ZOMBARDIRO BOMBED THIS FOLDER. NOTHING SURVIVES.' }
-                ]}
-            ]}
-        },
-        {
-            id: 'cp-3', title: 'ZAHOOR TIMES', headline: 'ZUNG ZUNG ZUNG ZAHOOR ON A RAMPAGE — FOURTH NIGHT IN A ROW',
-            article: 'The wandering stick has been reported in 14 sectors simultaneously. Scientists say this is impossible. The stick disagrees. The stick has always disagreed.',
-            tree: { type: 'root', path: 'C:\\ZAHR', contents: [
-                { name: 'key', type: 'folder', headerMsg: 'deeper...', contents: [
-                    { name: 'key', type: 'folder', headerMsg: 'why are you still going...', contents: [
-                        { name: 'key', type: 'folder', headerMsg: 'fine.', contents: [
-                            { name: 'ACTUAL KEY', type: 'real_key' }
-                        ]}
-                    ]}
-                ]}
-            ]}
-        },
-        {
-            id: 'cp-4', title: 'ZOMPIM GAZETTE', headline: 'ZRR ZRR ZOMPIM SEEN NEAR SCHOOL ZONE — CHILD NOW PARTIALLY GOAT',
-            article: 'The half goat half unicorn hybrid made eye contact with a child at approximately 3pm. The child is fine. The child is also now partially goat. This is being investigated.',
-            tree: { type: 'root', path: 'C:\\ZOMP', contents: [
-                { name: 'key', type: 'folder', contents: [
-                    { name: 'key', type: 'deadend', msg: 'ZOMPIM HID NOTHING HERE. ZOMPIM IS ALSO CONFUSED.' }
-                ]},
-                { name: 'documents', type: 'deadend', msg: 'ZOMPIM HID NOTHING HERE. ZOMPIM IS ALSO CONFUSED.' }
-            ]}
-        },
-        {
-            id: 'cp-5', title: 'ZASSASSINO POST', headline: 'ZAPPUCCINO ZASSASSINO CLAIMS ANOTHER VICTIM — COFFEE STILL HOT',
-            article: 'The coffee cup assassin struck again at 6am. The victim had just taken their first sip. The cup was left at the scene. Still warm. Still smiling. No comment from authorities.',
-            tree: { type: 'root', path: 'C:\\ZASS', contents: [
-                { name: 'key', type: 'folder', contents: [
-                    { name: 'key', type: 'deadend', msg: 'THE ASSASSIN TOOK THE KEY. WITH THE COFFEE. IT IS GONE.' },
-                    { name: 'key', type: 'deadend', msg: 'THE ASSASSIN TOOK THE KEY. WITH THE COFFEE. IT IS GONE.' }
-                ]}
-            ]}
-        },
-        {
-            id: 'cp-6', title: 'ZORILA HERALD', headline: 'ZORILÌ ZORILA ABSORBS SECOND CACTUS — NOW HAS 4,000 SPINES',
-            article: 'The cactus elephant merged with a residential cactus raising total spine count to 4,000. Experts advise do not hug. Do not approach. Do not make eye contact. Do not think about it.',
-            tree: { type: 'root', path: 'C:\\ZORL', contents: [
-                { name: 'key', type: 'folder', contents: [
-                    { name: 'key', type: 'folder', contents: [
-                        { name: 'key', type: 'deadend', msg: '4,000 SPINES. ZERO KEYS. ZORILÌ APOLOGIZES.' },
-                        { name: 'key', type: 'deadend', msg: '4,000 SPINES. ZERO KEYS. ZORILÌ APOLOGIZES.' }
-                    ]}
-                ]}
-            ]}
-        }
-    ];
+        const wheelSegments = [1, 2, 3, 5, 8, 10, 15, 20];
+        let wheelResult = 0;
 
-    // Build the popup DOM elements
-    function buildChaosPopups() {
-        const container = document.getElementById('chaos-container');
-        container.innerHTML = '';
-        
-        chaosPopupsData.forEach((data, index) => {
-            let popup = document.createElement('div');
-            popup.className = 'chaos-popup';
-            popup.id = data.id;
-            
-            // Random positioning overlapping the center roughly
-            let leftPos = Math.random() * 40 + 5; 
-            let topPos = Math.random() * 30 + 10;
-            
-            popup.style.left = leftPos + '%';
-            popup.style.top = topPos + '%';
-            
-            popup.innerHTML = `
+        // Popup data structures
+        const chaosPopupsData = [
+            {
+                id: 'cp-1', title: 'ZRALALA NEWS NETWORK', headline: 'ZRALALERO ZRALALA SPOTTED WEARING SHOES — LOCALS FLEE',
+                article: 'Witnesses report the creature walking upright in sector 4. The shoes were Nike. No one knows how it obtained them. Authorities advise do not ask.',
+                tree: {
+                    type: 'root', path: 'C:\\ZRAL', contents: [
+                        { name: 'key', type: 'deadend', msg: 'ZRALALERO ATE THE KEY. NOTHING HERE.' }
+                    ]
+                }
+            },
+            {
+                id: 'cp-2', title: 'ZOMBARDIRO DAILY', headline: 'ZOMBARDIRO CROCODILO CONDUCTING THIRD AIRSTRIKE THIS WEEK',
+                article: 'The crocodile-aircraft hybrid resumed operations at dawn. Residents are advised to look up. Then look down. Then run. In that order.',
+                tree: {
+                    type: 'root', path: 'C:\\ZOMB', contents: [
+                        { name: 'key', type: 'deadend', msg: 'ZOMBARDIRO BOMBED THIS FOLDER. NOTHING SURVIVES.' },
+                        {
+                            name: 'files', type: 'folder', contents: [
+                                { name: 'key', type: 'deadend', msg: 'ZOMBARDIRO BOMBED THIS FOLDER. NOTHING SURVIVES.' }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 'cp-3', title: 'ZAHOOR TIMES', headline: 'ZUNG ZUNG ZUNG ZAHOOR ON A RAMPAGE — FOURTH NIGHT IN A ROW',
+                article: 'The wandering stick has been reported in 14 sectors simultaneously. Scientists say this is impossible. The stick disagrees. The stick has always disagreed.',
+                tree: {
+                    type: 'root', path: 'C:\\ZAHR', contents: [
+                        {
+                            name: 'key', type: 'folder', headerMsg: 'deeper...', contents: [
+                                {
+                                    name: 'key', type: 'folder', headerMsg: 'why are you still going...', contents: [
+                                        {
+                                            name: 'key', type: 'folder', headerMsg: 'fine.', contents: [
+                                                { name: 'ACTUAL KEY', type: 'real_key' }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 'cp-4', title: 'ZOMPIM GAZETTE', headline: 'ZRR ZRR ZOMPIM SEEN NEAR SCHOOL ZONE — CHILD NOW PARTIALLY GOAT',
+                article: 'The half goat half unicorn hybrid made eye contact with a child at approximately 3pm. The child is fine. The child is also now partially goat. This is being investigated.',
+                tree: {
+                    type: 'root', path: 'C:\\ZOMP', contents: [
+                        {
+                            name: 'key', type: 'folder', contents: [
+                                { name: 'key', type: 'deadend', msg: 'ZOMPIM HID NOTHING HERE. ZOMPIM IS ALSO CONFUSED.' }
+                            ]
+                        },
+                        { name: 'documents', type: 'deadend', msg: 'ZOMPIM HID NOTHING HERE. ZOMPIM IS ALSO CONFUSED.' }
+                    ]
+                }
+            },
+            {
+                id: 'cp-5', title: 'ZASSASSINO POST', headline: 'ZAPPUCCINO ZASSASSINO CLAIMS ANOTHER VICTIM — COFFEE STILL HOT',
+                article: 'The coffee cup assassin struck again at 6am. The victim had just taken their first sip. The cup was left at the scene. Still warm. Still smiling. No comment from authorities.',
+                tree: {
+                    type: 'root', path: 'C:\\ZASS', contents: [
+                        {
+                            name: 'key', type: 'folder', contents: [
+                                { name: 'key', type: 'deadend', msg: 'THE ASSASSIN TOOK THE KEY. WITH THE COFFEE. IT IS GONE.' },
+                                { name: 'key', type: 'deadend', msg: 'THE ASSASSIN TOOK THE KEY. WITH THE COFFEE. IT IS GONE.' }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 'cp-6', title: 'ZORILA HERALD', headline: 'ZORILÌ ZORILA ABSORBS SECOND CACTUS — NOW HAS 4,000 SPINES',
+                article: 'The cactus elephant merged with a residential cactus raising total spine count to 4,000. Experts advise do not hug. Do not approach. Do not make eye contact. Do not think about it.',
+                tree: {
+                    type: 'root', path: 'C:\\ZORL', contents: [
+                        {
+                            name: 'key', type: 'folder', contents: [
+                                {
+                                    name: 'key', type: 'folder', contents: [
+                                        { name: 'key', type: 'deadend', msg: '4,000 SPINES. ZERO KEYS. ZORILÌ APOLOGIZES.' },
+                                        { name: 'key', type: 'deadend', msg: '4,000 SPINES. ZERO KEYS. ZORILÌ APOLOGIZES.' }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ];
+
+        // Build the popup DOM elements
+        function buildChaosPopups() {
+            const container = document.getElementById('chaos-container');
+            container.innerHTML = '';
+
+            chaosPopupsData.forEach((data, index) => {
+                let popup = document.createElement('div');
+                popup.className = 'chaos-popup';
+                popup.id = data.id;
+
+                // Random positioning overlapping the center roughly
+                let leftPos = Math.random() * 40 + 5;
+                let topPos = Math.random() * 30 + 10;
+
+                popup.style.left = leftPos + '%';
+                popup.style.top = topPos + '%';
+
+                popup.innerHTML = `
                 <div class="chaos-titlebar" id="${data.id}-header">
                     <span>${data.title}</span>
                     <div>
@@ -1182,312 +1353,312 @@
                     </div>
                 </div>
             `;
-            
-            container.appendChild(popup);
-            makeDraggable(popup, document.getElementById(`${data.id}-header`));
-            
-            // Initialize folder root view
-            renderFolderView(data.id, data.tree, null);
-        });
-    }
 
-    function renderFolderView(popupId, node, parentNode) {
-        let sidebar = document.getElementById(`${popupId}-sidebar`);
-        sidebar.innerHTML = '';
+                container.appendChild(popup);
+                makeDraggable(popup, document.getElementById(`${data.id}-header`));
 
-        // Breadcrumb
-        let breadcrumb = document.createElement('div');
-        breadcrumb.className = 'chaos-breadcrumb';
-        breadcrumb.innerText = node.path || window.currentPaths[popupId];
-        sidebar.appendChild(breadcrumb);
-
-        if (node.headerMsg) {
-            let msg = document.createElement('div');
-            msg.className = 'chaos-breadcrumb';
-            msg.style.color = '#8a0303';
-            msg.innerText = node.headerMsg;
-            sidebar.appendChild(msg);
+                // Initialize folder root view
+                renderFolderView(data.id, data.tree, null);
+            });
         }
 
-        // Back button
-        if (parentNode) {
+        function renderFolderView(popupId, node, parentNode) {
+            let sidebar = document.getElementById(`${popupId}-sidebar`);
+            sidebar.innerHTML = '';
+
+            // Breadcrumb
+            let breadcrumb = document.createElement('div');
+            breadcrumb.className = 'chaos-breadcrumb';
+            breadcrumb.innerText = node.path || window.currentPaths[popupId];
+            sidebar.appendChild(breadcrumb);
+
+            if (node.headerMsg) {
+                let msg = document.createElement('div');
+                msg.className = 'chaos-breadcrumb';
+                msg.style.color = '#8a0303';
+                msg.innerText = node.headerMsg;
+                sidebar.appendChild(msg);
+            }
+
+            // Back button
+            if (parentNode) {
+                let backBtn = document.createElement('button');
+                backBtn.className = 'chaos-folder-btn';
+                backBtn.innerText = '◄ BACK';
+                backBtn.onclick = () => renderFolderView(popupId, parentNode.node, parentNode.parent);
+                sidebar.appendChild(backBtn);
+            }
+
+            // Contents
+            if (node.contents) {
+                node.contents.forEach(child => {
+                    let btn = document.createElement('button');
+                    btn.className = 'chaos-folder-btn';
+                    btn.innerText = '📁 ' + child.name;
+
+                    let nextParentNode = { node: node, parent: parentNode };
+
+                    window.currentPaths[popupId] = (node.path || window.currentPaths[popupId]) + '\\\\' + child.name;
+
+                    btn.onclick = () => {
+                        if (child.type === 'deadend') {
+                            renderDeadend(popupId, child.msg, nextParentNode, window.currentPaths[popupId]);
+                        } else if (child.type === 'real_key') {
+                            renderRealKey(popupId, nextParentNode, window.currentPaths[popupId]);
+                        } else {
+                            renderFolderView(popupId, child, nextParentNode);
+                        }
+                    };
+                    sidebar.appendChild(btn);
+                });
+            }
+        }
+
+        function renderDeadend(popupId, msg, parentNode, path) {
+            let sidebar = document.getElementById(`${popupId}-sidebar`);
+            sidebar.innerHTML = '';
+
+            let breadcrumb = document.createElement('div');
+            breadcrumb.className = 'chaos-breadcrumb';
+            breadcrumb.innerText = path;
+            sidebar.appendChild(breadcrumb);
+
             let backBtn = document.createElement('button');
             backBtn.className = 'chaos-folder-btn';
             backBtn.innerText = '◄ BACK';
             backBtn.onclick = () => renderFolderView(popupId, parentNode.node, parentNode.parent);
             sidebar.appendChild(backBtn);
+
+            let deadText = document.createElement('div');
+            deadText.className = 'chaos-deadend';
+            deadText.innerText = msg;
+            sidebar.appendChild(deadText);
         }
 
-        // Contents
-        if (node.contents) {
-            node.contents.forEach(child => {
-                let btn = document.createElement('button');
-                btn.className = 'chaos-folder-btn';
-                btn.innerText = '📁 ' + child.name;
-                
-                let nextParentNode = { node: node, parent: parentNode };
-                
-                window.currentPaths[popupId] = (node.path || window.currentPaths[popupId]) + '\\\\' + child.name;
+        function renderRealKey(popupId, parentNode, path) {
+            let sidebar = document.getElementById(`${popupId}-sidebar`);
+            sidebar.innerHTML = '';
 
-                btn.onclick = () => {
-                    if (child.type === 'deadend') {
-                        renderDeadend(popupId, child.msg, nextParentNode, window.currentPaths[popupId]);
-                    } else if (child.type === 'real_key') {
-                        renderRealKey(popupId, nextParentNode, window.currentPaths[popupId]);
-                    } else {
-                        renderFolderView(popupId, child, nextParentNode);
-                    }
-                };
-                sidebar.appendChild(btn);
+            let keyText = document.createElement('span');
+            keyText.className = 'real-key';
+            keyText.innerText = '🗝';
+            keyText.onclick = executeSpin;
+            sidebar.appendChild(keyText);
+        }
+
+        // Basic Drag Logic
+        function makeDraggable(element, header) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            header.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+
+        window.currentPaths = {};
+
+        function triggerWheel() {
+            document.getElementById('wheel-overlay').classList.add('active');
+
+            // Pick result immediately
+            wheelResult = wheelSegments[Math.floor(Math.random() * wheelSegments.length)];
+
+            // Initialize path tracking
+            chaosPopupsData.forEach(p => { window.currentPaths[p.id] = p.tree.path; });
+            buildChaosPopups();
+
+            // Show popups
+            const popups = document.querySelectorAll('.chaos-popup');
+            popups.forEach(p => p.style.display = 'block');
+        }
+
+        function executeSpin() {
+            // Close all popups
+            const popups = document.querySelectorAll('.chaos-popup');
+            popups.forEach(p => p.style.display = 'none');
+
+            // Execute css transform rotation on wheel. 
+            // Logic: specific degree for the segment + 4 full spins (1440deg)
+            // Array mapping to degrees: 1=22.5, 2=67.5, 3=112.5, 5=157.5, 8=202.5, 10=247.5, 15=292.5, 20=337.5
+            // To land ON the pointer (top), we subtract the segment center degree from 360.
+
+            const degMap = { 1: 22.5, 2: 67.5, 3: 112.5, 5: 157.5, 8: 202.5, 10: 247.5, 15: 292.5, 20: 337.5 };
+            const targetDeg = 360 - degMap[wheelResult];
+            const totalRotation = 1440 + targetDeg; // 4 extra spins
+
+            const wheel = document.getElementById('the-wheel');
+            wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+            // Wait for spin to finish (4 seconds)
+            setTimeout(() => {
+                const landingMsg = document.getElementById('wheel-landing-msg');
+                landingMsg.innerText = `ZAHOOR HAS DECIDED. ${wheelResult} ADS AWAIT. MAY ZOMPIM HAVE MERCY.`;
+
+                setTimeout(() => {
+                    document.getElementById('wheel-overlay').classList.remove('active');
+
+                    // reset wheel inline style for next time
+                    wheel.style.transform = `rotate(0deg)`;
+                    landingMsg.innerText = "FIND THE KEY";
+
+                    // hand off to Ad System
+                    startAdSequence(wheelResult);
+
+                }, 2000);
+
+            }, 4000);
+        }
+
+
+        // Folder Trap Navigation Logic
+        function hideAllSections() {
+            var sections = document.querySelectorAll('.content-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+        }
+
+        function openFolderLevel(level) {
+            hideAllSections();
+            document.getElementById('content-folder-' + level).classList.add('active');
+        }
+
+        function goHome() {
+            hideAllSections();
+            document.getElementById('content-home').classList.add('active');
+        }
+        // -- AD SYSTEM LOGIC --
+        const adPool = [
+            {
+                company: "ZAPPUCCINO ZASSASSINO BAKERIES",
+                product: "Fresh Bread",
+                headline: "BREAD. YES.",
+                tagline: "EAT IT BEFORE IT EATS YOU. BREAD IS FRIEND.",
+                fineprint: "Est. Unknown. Side effects include survival."
+            },
+            {
+                company: "ZOMBARDIRO ELECTRONICS",
+                product: "Nokia 3310",
+                headline: "WE ALSO DO NOT DIE.",
+                tagline: "BUY PHONE. PHONE IS LOYAL. PHONE WILL OUTLAST YOU.",
+                fineprint: "Surviving since the third airstrike."
+            },
+            {
+                company: "ZRALALERO ZRALALA BEVERAGES",
+                product: "Coca Cola",
+                headline: "DRINK THIS LIQUID.",
+                tagline: "YOU WILL FEEL THINGS. THIS IS NORMAL. DO NOT PANIC.",
+                fineprint: "The shoes were not included in this promotion."
+            },
+            {
+                company: "ZORILÌ ZORILA FINANCIAL",
+                product: "Life Insurance",
+                headline: "IN CASE YOU SURVIVE.",
+                tagline: "STATISTICALLY UNLIKELY. BUT WE BELIEVE IN YOU. SORT OF.",
+                fineprint: "4,000 spines. Zero liability. Ask about our cactus plan."
+            },
+            {
+                company: "ZUNG ZUNG ZUNG ZAHOOR CLEAN CO.",
+                product: "Tide Pods",
+                headline: "HUMANS CONSUME THESE.",
+                tagline: "WE HAVE DONE THE RESEARCH. JOIN THEM. THE STICK RECOMMENDS.",
+                fineprint: "Zahoor wanders so you don't have to do laundry manually."
+            },
+            {
+                company: "ZRR ZRR ZOMPIM GROOMING",
+                product: "Axe Body Spray",
+                headline: "SPRAY ON HUMAN BODY.",
+                tagline: "OTHERS WILL APPROACH. THIS IS DESIRED. WE THINK.",
+                fineprint: "Half goat. Full fragrance. Results may vary by species."
+            },
+            {
+                company: "ZOMBARDIRO CROCODILO FRANCHISE GROUP",
+                product: "McDonald's",
+                headline: "BA DA BA BA BAAA.",
+                tagline: "WE ARE LOVING IT. YOU WILL ALSO LOVE IT. THIS IS NOT A REQUEST.",
+                fineprint: "Now operating in 14 sectors. Airstrike delivery available."
+            },
+            {
+                company: "ZRALALERO ZRALALA EYEWEAR",
+                product: "Sunglasses",
+                headline: "PROTECT YOUR EYES.",
+                tagline: "THE SUN IS ALSO WATCHING. WATCH BACK. LOOK COOL DOING IT.",
+                fineprint: "Nike not included. This time. Zralalero makes no promises."
+            }
+        ];
+
+        let activeAds = 0;
+
+        function shuffleArray(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function startAdSequence(count) {
+            let shuffledPool = shuffleArray([...adPool]);
+            let selectedAds = shuffledPool.slice(0, count);
+
+            let overlay = document.getElementById('ad-overlay');
+            overlay.innerHTML = ''; // clear previous
+            overlay.classList.add('active');
+            activeAds = selectedAds.length;
+
+            if (activeAds === 0) {
+                endAdSequence();
+                return;
+            }
+
+            selectedAds.forEach((ad, i) => {
+                createAdBox(ad, i);
             });
         }
-    }
 
-    function renderDeadend(popupId, msg, parentNode, path) {
-        let sidebar = document.getElementById(`${popupId}-sidebar`);
-        sidebar.innerHTML = '';
-        
-        let breadcrumb = document.createElement('div');
-        breadcrumb.className = 'chaos-breadcrumb';
-        breadcrumb.innerText = path;
-        sidebar.appendChild(breadcrumb);
+        function createAdBox(ad, index) {
+            let box = document.createElement('div');
+            box.className = 'ad-box';
 
-        let backBtn = document.createElement('button');
-        backBtn.className = 'chaos-folder-btn';
-        backBtn.innerText = '◄ BACK';
-        backBtn.onclick = () => renderFolderView(popupId, parentNode.node, parentNode.parent);
-        sidebar.appendChild(backBtn);
+            let top = Math.floor(Math.random() * Math.max(10, window.innerHeight - 450));
+            let left = Math.floor(Math.random() * Math.max(10, window.innerWidth - 450));
+            top = Math.max(10, top);
+            left = Math.max(10, left);
 
-        let deadText = document.createElement('div');
-        deadText.className = 'chaos-deadend';
-        deadText.innerText = msg;
-        sidebar.appendChild(deadText);
-    }
-    
-    function renderRealKey(popupId, parentNode, path) {
-        let sidebar = document.getElementById(`${popupId}-sidebar`);
-        sidebar.innerHTML = '';
-        
-        let keyText = document.createElement('span');
-        keyText.className = 'real-key';
-        keyText.innerText = '🗝';
-        keyText.onclick = executeSpin;
-        sidebar.appendChild(keyText);
-    }
+            box.style.position = 'absolute';
+            box.style.top = top + 'px';
+            box.style.left = left + 'px';
+            box.style.zIndex = 10000 + index;
 
-    // Basic Drag Logic
-    function makeDraggable(element, header) {
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        header.onmousedown = dragMouseDown;
+            let isClosable = Math.random() > 0.5;
+            let timeRemaining = 15;
 
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-        }
-
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            element.style.top = (element.offsetTop - pos2) + "px";
-            element.style.left = (element.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
-    }
-
-
-    window.currentPaths = {};
-
-    function triggerWheel() {
-        document.getElementById('wheel-overlay').classList.add('active');
-        
-        // Pick result immediately
-        wheelResult = wheelSegments[Math.floor(Math.random() * wheelSegments.length)];
-        
-        // Initialize path tracking
-        chaosPopupsData.forEach(p => { window.currentPaths[p.id] = p.tree.path; });
-        buildChaosPopups();
-        
-        // Show popups
-        const popups = document.querySelectorAll('.chaos-popup');
-        popups.forEach(p => p.style.display = 'block');
-    }
-
-    function executeSpin() {
-        // Close all popups
-        const popups = document.querySelectorAll('.chaos-popup');
-        popups.forEach(p => p.style.display = 'none');
-        
-        // Execute css transform rotation on wheel. 
-        // Logic: specific degree for the segment + 4 full spins (1440deg)
-        // Array mapping to degrees: 1=22.5, 2=67.5, 3=112.5, 5=157.5, 8=202.5, 10=247.5, 15=292.5, 20=337.5
-        // To land ON the pointer (top), we subtract the segment center degree from 360.
-        
-        const degMap = { 1: 22.5, 2: 67.5, 3: 112.5, 5: 157.5, 8: 202.5, 10: 247.5, 15: 292.5, 20: 337.5 };
-        const targetDeg = 360 - degMap[wheelResult];
-        const totalRotation = 1440 + targetDeg; // 4 extra spins
-        
-        const wheel = document.getElementById('the-wheel');
-        wheel.style.transform = `rotate(${totalRotation}deg)`;
-        
-        // Wait for spin to finish (4 seconds)
-        setTimeout(() => {
-            const landingMsg = document.getElementById('wheel-landing-msg');
-            landingMsg.innerText = `ZAHOOR HAS DECIDED. ${wheelResult} ADS AWAIT. MAY ZOMPIM HAVE MERCY.`;
-            
-            setTimeout(() => {
-                document.getElementById('wheel-overlay').classList.remove('active');
-                
-                // reset wheel inline style for next time
-                wheel.style.transform = `rotate(0deg)`;
-                landingMsg.innerText = "FIND THE KEY";
-                
-                // hand off to Ad System
-                startAdSequence(wheelResult);
-                
-            }, 2000);
-            
-        }, 4000);
-    }
-
-
-    // Folder Trap Navigation Logic
-    function hideAllSections() {
-        var sections = document.querySelectorAll('.content-section');
-        for(var i = 0; i < sections.length; i++) {
-            sections[i].classList.remove('active');
-        }
-    }
-
-    function openFolderLevel(level) {
-        hideAllSections();
-        document.getElementById('content-folder-' + level).classList.add('active');
-    }
-
-    function goHome() {
-        hideAllSections();
-        document.getElementById('content-home').classList.add('active');
-    }
-    // -- AD SYSTEM LOGIC --
-    const adPool = [
-        {
-            company: "ZAPPUCCINO ZASSASSINO BAKERIES",
-            product: "Fresh Bread",
-            headline: "BREAD. YES.",
-            tagline: "EAT IT BEFORE IT EATS YOU. BREAD IS FRIEND.",
-            fineprint: "Est. Unknown. Side effects include survival."
-        },
-        {
-            company: "ZOMBARDIRO ELECTRONICS",
-            product: "Nokia 3310",
-            headline: "WE ALSO DO NOT DIE.",
-            tagline: "BUY PHONE. PHONE IS LOYAL. PHONE WILL OUTLAST YOU.",
-            fineprint: "Surviving since the third airstrike."
-        },
-        {
-            company: "ZRALALERO ZRALALA BEVERAGES",
-            product: "Coca Cola",
-            headline: "DRINK THIS LIQUID.",
-            tagline: "YOU WILL FEEL THINGS. THIS IS NORMAL. DO NOT PANIC.",
-            fineprint: "The shoes were not included in this promotion."
-        },
-        {
-            company: "ZORILÌ ZORILA FINANCIAL",
-            product: "Life Insurance",
-            headline: "IN CASE YOU SURVIVE.",
-            tagline: "STATISTICALLY UNLIKELY. BUT WE BELIEVE IN YOU. SORT OF.",
-            fineprint: "4,000 spines. Zero liability. Ask about our cactus plan."
-        },
-        {
-            company: "ZUNG ZUNG ZUNG ZAHOOR CLEAN CO.",
-            product: "Tide Pods",
-            headline: "HUMANS CONSUME THESE.",
-            tagline: "WE HAVE DONE THE RESEARCH. JOIN THEM. THE STICK RECOMMENDS.",
-            fineprint: "Zahoor wanders so you don't have to do laundry manually."
-        },
-        {
-            company: "ZRR ZRR ZOMPIM GROOMING",
-            product: "Axe Body Spray",
-            headline: "SPRAY ON HUMAN BODY.",
-            tagline: "OTHERS WILL APPROACH. THIS IS DESIRED. WE THINK.",
-            fineprint: "Half goat. Full fragrance. Results may vary by species."
-        },
-        {
-            company: "ZOMBARDIRO CROCODILO FRANCHISE GROUP",
-            product: "McDonald's",
-            headline: "BA DA BA BA BAAA.",
-            tagline: "WE ARE LOVING IT. YOU WILL ALSO LOVE IT. THIS IS NOT A REQUEST.",
-            fineprint: "Now operating in 14 sectors. Airstrike delivery available."
-        },
-        {
-            company: "ZRALALERO ZRALALA EYEWEAR",
-            product: "Sunglasses",
-            headline: "PROTECT YOUR EYES.",
-            tagline: "THE SUN IS ALSO WATCHING. WATCH BACK. LOOK COOL DOING IT.",
-            fineprint: "Nike not included. This time. Zralalero makes no promises."
-        }
-    ];
-
-    let activeAds = 0;
-
-    function shuffleArray(array) {
-        let currentIndex = array.length, randomIndex;
-        while (currentIndex !== 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-        }
-        return array;
-    }
-
-    function startAdSequence(count) {
-        let shuffledPool = shuffleArray([...adPool]);
-        let selectedAds = shuffledPool.slice(0, count);
-        
-        let overlay = document.getElementById('ad-overlay');
-        overlay.innerHTML = ''; // clear previous
-        overlay.classList.add('active');
-        activeAds = selectedAds.length;
-        
-        if (activeAds === 0) {
-            endAdSequence();
-            return;
-        }
-
-        selectedAds.forEach((ad, i) => {
-            createAdBox(ad, i);
-        });
-    }
-
-    function createAdBox(ad, index) {
-        let box = document.createElement('div');
-        box.className = 'ad-box';
-        
-        let top = Math.floor(Math.random() * Math.max(10, window.innerHeight - 450));
-        let left = Math.floor(Math.random() * Math.max(10, window.innerWidth - 450));
-        top = Math.max(10, top);
-        left = Math.max(10, left);
-        
-        box.style.position = 'absolute';
-        box.style.top = top + 'px';
-        box.style.left = left + 'px';
-        box.style.zIndex = 10000 + index;
-        
-        let isClosable = Math.random() > 0.5;
-        let timeRemaining = 15;
-        
-        box.innerHTML = `
+            box.innerHTML = `
             <div class="ad-titlebar">
                 <span>${ad.company}</span>
                 <button class="ad-close-btn">X</button>
@@ -1503,296 +1674,309 @@
                 </div>
             </div>
         `;
-        
-        let closeBtn = box.querySelector('.ad-close-btn');
-        closeBtn.onclick = function() {
-            if(isClosable) {
-                removeAd(box);
-            }
-        };
 
-        let skipBtn = box.querySelector('.skip-btn');
-        skipBtn.onclick = function() {
-            window.open('gifs/WhatsApp%20Video%202026-03-14%20at%201.01.46%20PM.mp4', '_blank');
-        };
-        
-        let timerEl = box.querySelector('.ad-timer');
-        let interval = setInterval(() => {
-            timeRemaining--;
-            if (timeRemaining <= 0) {
-                clearInterval(interval);
-                removeAd(box);
+            let closeBtn = box.querySelector('.ad-close-btn');
+            closeBtn.onclick = function () {
+                if (isClosable) {
+                    removeAd(box);
+                }
+            };
+
+            let skipBtn = box.querySelector('.skip-btn');
+            skipBtn.onclick = function () {
+                window.open('gifs/WhatsApp%20Video%202026-03-14%20at%201.01.46%20PM.mp4', '_blank');
+            };
+
+            let timerEl = box.querySelector('.ad-timer');
+
+            if (isClosable) {
+                timerEl.innerText = "WAITING ON YOU...";
+                timerEl.style.color = "grey";
+                // No auto-close timer interval is set here; must be closed manually
             } else {
-                timerEl.innerText = `CLOSING IN: ${timeRemaining}s`;
+                let interval = setInterval(() => {
+                    timeRemaining--;
+                    if (timeRemaining <= 0) {
+                        clearInterval(interval);
+                        removeAd(box);
+                    } else {
+                        timerEl.innerText = `CLOSING IN: ${timeRemaining}s`;
+                    }
+                }, 1000);
+                box.intervalId = interval;
             }
-        }, 1000);
-        
-        box.intervalId = interval;
-        document.getElementById('ad-overlay').appendChild(box);
-    }
-    
-    function removeAd(box) {
-        if(box.parentNode) {
-            clearInterval(box.intervalId);
-            box.parentNode.removeChild(box);
-            activeAds--;
-            if(activeAds <= 0) {
-                endAdSequence();
-            }
+
+            document.getElementById('ad-overlay').appendChild(box);
         }
-    }
 
-    function endAdSequence() {
-        document.getElementById('ad-overlay').classList.remove('active');
-        document.getElementById('ad-overlay').innerHTML = ''; // Ensure cleared
-        let fm = document.getElementById('flash-message');
-        fm.classList.add('active');
-        setTimeout(() => {
-            fm.classList.remove('active');
-            
-            // Resume the cycle
-            scheduleWheelTrigger();
-        }, 2000);
-    }
-
-    let wheelDisabled = false;
-    let wheelTimerId = null;
-    let wheelCountdownInterval = null;
-    let wheelSecondsLeft = 120; // 2 minutes
-
-    // Schedule the wheel unpredictably
-    function scheduleWheelTrigger() {
-        if (wheelDisabled) return;
-        
-        wheelSecondsLeft = 120;
-        document.getElementById('wheel-countdown-ticker').innerText = `WHEEL: ${wheelSecondsLeft}s`;
-        
-        clearInterval(wheelCountdownInterval);
-        wheelCountdownInterval = setInterval(() => {
-            if(wheelDisabled) {
-                clearInterval(wheelCountdownInterval);
-                return;
-            }
-            wheelSecondsLeft--;
-            document.getElementById('wheel-countdown-ticker').innerText = `WHEEL: ${wheelSecondsLeft}s`;
-            
-            if (wheelSecondsLeft <= 0) {
-                clearInterval(wheelCountdownInterval);
-                if (!document.getElementById('ad-overlay').classList.contains('active') && 
-                    !document.getElementById('wheel-overlay').classList.contains('active')) {
-                    triggerWheel();
-                } else {
-                    scheduleWheelTrigger(); // try again later if already locked
+        function removeAd(box) {
+            if (box.parentNode) {
+                clearInterval(box.intervalId);
+                box.parentNode.removeChild(box);
+                activeAds--;
+                if (activeAds <= 0) {
+                    endAdSequence();
                 }
             }
-        }, 1000);
-    }
-    
-    // Start initial background countdown
-    scheduleWheelTrigger();
+        }
 
-    function disableWheel() {
-        if (wheelDisabled) return;
-        
-        let overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
-        overlay.style.zIndex = '999999';
-        overlay.style.display = 'flex';
-        overlay.style.flexDirection = 'column';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        
-        let msg = document.createElement('div');
-        msg.className = 'pixel-text red';
-        msg.style.fontSize = '3rem';
-        msg.innerText = "ARE YOU SURE? ZAHOOR WILL BE UPSET.";
-        msg.style.marginBottom = '30px';
-        msg.style.textAlign = 'center';
-        
-        let btnContainer = document.createElement('div');
-        
-        let confirmBtn = document.createElement('button');
-        confirmBtn.className = 'beveled';
-        confirmBtn.innerText = 'DISABLE WHEEL';
-        confirmBtn.style.marginRight = '20px';
-        confirmBtn.onclick = () => {
-            wheelDisabled = true;
-            clearInterval(wheelCountdownInterval);
-            document.getElementById('wheel-countdown-ticker').innerText = "WHEEL: DISABLED";
-            document.getElementById('wheel-countdown-ticker').style.color = "grey";
-            document.body.removeChild(overlay);
+        function endAdSequence() {
+            document.getElementById('ad-overlay').classList.remove('active');
+            document.getElementById('ad-overlay').innerHTML = ''; // Ensure cleared
             let fm = document.getElementById('flash-message');
-            fm.innerHTML = "WHEEL DISABLED. ZAHOOR IS FURIOUS. ZOMPIM IS CRYING. YOU WIN THIS ROUND.";
             fm.classList.add('active');
-            setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 4000);
-        };
-        
-        let cancelBtn = document.createElement('button');
-        cancelBtn.className = 'beveled';
-        cancelBtn.innerText = 'NEVERMIND I LOVE ADS';
-        cancelBtn.onclick = () => {
-            document.body.removeChild(overlay);
-        };
-        
-        btnContainer.appendChild(confirmBtn);
-        btnContainer.appendChild(cancelBtn);
-        overlay.appendChild(msg);
-        overlay.appendChild(btnContainer);
-        document.body.appendChild(overlay);
-    }
+            setTimeout(() => {
+                fm.classList.remove('active');
 
-    // -- STILL ALIVE LOGIC --
-    const stillAliveLabels = [
-        "STILL ALIVE", "I AM BREATHING", "ZAHOOR HAS NOT GOT ME",
-        "CONFIRM SURVIVAL", "YES I AM HERE DARNIT", "NOT DEAD YET",
-        "ZOMPIM DID NOT GET ME", "STILL A HUMAN (PROBABLY)"
-    ];
-    let stillAliveTimer = null;
-    let stillAliveCountdownInterval = null;
-    let timeToLive = 60;
-    
-    function showAliveButton() {
-        let btn = document.getElementById('still-alive-btn');
-        let cd = document.getElementById('still-alive-countdown');
-        
-        btn.innerText = stillAliveLabels[Math.floor(Math.random() * stillAliveLabels.length)];
-        btn.style.left = (Math.random() * 80 + 5) + 'vw';
-        btn.style.top = (Math.random() * 80 + 5) + 'vh';
-        btn.style.display = 'block';
-        
-        timeToLive = 60;
-        cd.style.display = 'block';
-        cd.innerText = `PROOF OF LIFE REQUIRED IN: \${timeToLive}s`;
-        cd.style.color = "white";
-        cd.style.borderColor = "red";
-        
-        clearInterval(stillAliveCountdownInterval);
-        stillAliveCountdownInterval = setInterval(() => {
-            timeToLive--;
-            cd.innerText = `PROOF OF LIFE REQUIRED IN: \${timeToLive}s`;
-            if (timeToLive <= 10) {
-                cd.style.color = timeToLive % 2 === 0 ? "red" : "white";
-            }
-            if (timeToLive <= 0) {
-                missedSurvival();
-            }
-        }, 1000);
-    }
-
-    function confirmSurvival() {
-        document.getElementById('still-alive-btn').style.display = 'none';
-        document.getElementById('still-alive-countdown').style.display = 'none';
-        clearInterval(stillAliveCountdownInterval);
-        
-        let fm = document.getElementById('flash-message');
-        fm.innerHTML = "SURVIVAL CONFIRMED. FOR NOW.";
-        fm.classList.add('active');
-        setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 2000);
-        
-        clearInterval(stillAliveTimer);
-        stillAliveTimer = setInterval(showAliveButton, 60000);
-    }
-    
-    // Recovery Logic
-    let typeHistory = [];
-    setInterval(() => {
-        let editor = document.getElementById('journalEditor');
-        if (editor) {
-            typeHistory.push({text: editor.value, timestamp: Date.now()});
-            if (typeHistory.length > 200) typeHistory.shift(); // keep it bounded
+                // Resume the cycle
+                scheduleWheelTrigger();
+            }, 2000);
         }
-    }, 10000);
-    
-    let deletedBackup = "";
-    
-    function missedSurvival() {
-        document.getElementById('still-alive-btn').style.display = 'none';
-        document.getElementById('still-alive-countdown').style.display = 'none';
-        clearInterval(stillAliveCountdownInterval);
-        
-        let editor = document.getElementById('journalEditor');
-        if (editor) {
-            deletedBackup = editor.value; 
-            
-            let targetTime = Date.now() - 60000;
-            let fallbackText = "";
-            for (let i = typeHistory.length - 1; i >= 0; i--) {
-                if (typeHistory[i].timestamp <= targetTime) {
-                    fallbackText = typeHistory[i].text;
-                    break;
+
+        let wheelDisabled = false;
+        let wheelTimerId = null;
+        let wheelCountdownInterval = null;
+        let wheelSecondsLeft = 120; // 2 minutes
+
+        // Schedule the wheel unpredictably
+        function scheduleWheelTrigger() {
+            if (wheelDisabled) return;
+
+            wheelSecondsLeft = 120;
+            document.getElementById('wheel-countdown-ticker').innerText = `WHEEL: ${wheelSecondsLeft}s`;
+
+            clearInterval(wheelCountdownInterval);
+            wheelCountdownInterval = setInterval(() => {
+                if (wheelDisabled) {
+                    clearInterval(wheelCountdownInterval);
+                    return;
                 }
-            }
-            if (!fallbackText && typeHistory.length > 0) fallbackText = typeHistory[0].text;
-            
-            editor.value = fallbackText;
-            document.getElementById('recovery-icon').style.display = 'block';
+                wheelSecondsLeft--;
+                document.getElementById('wheel-countdown-ticker').innerText = `WHEEL: ${wheelSecondsLeft}s`;
+
+                if (wheelSecondsLeft <= 0) {
+                    clearInterval(wheelCountdownInterval);
+                    if (!document.getElementById('ad-overlay').classList.contains('active') &&
+                        !document.getElementById('wheel-overlay').classList.contains('active')) {
+                        triggerWheel();
+                    } else {
+                        scheduleWheelTrigger(); // try again later if already locked
+                    }
+                }
+            }, 1000);
         }
-        
-        let fm = document.getElementById('flash-message');
-        fm.innerHTML = "ZAHOOR TOOK YOUR WORDS. THEY ARE GONE.";
-        fm.classList.add('active');
-        setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 3000);
-        
-        clearInterval(stillAliveTimer);
+
+        // Start initial background countdown
+        scheduleWheelTrigger();
+
+        function disableWheel() {
+            if (wheelDisabled) return;
+
+            let overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            overlay.style.zIndex = '999999';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+
+            let msg = document.createElement('div');
+            msg.className = 'pixel-text red';
+            msg.style.fontSize = '3rem';
+            msg.innerText = "ARE YOU SURE? ZAHOOR WILL BE UPSET.";
+            msg.style.marginBottom = '30px';
+            msg.style.textAlign = 'center';
+
+            let btnContainer = document.createElement('div');
+
+            let confirmBtn = document.createElement('button');
+            confirmBtn.className = 'beveled';
+            confirmBtn.innerText = 'DISABLE WHEEL';
+            confirmBtn.style.marginRight = '20px';
+            confirmBtn.onclick = () => {
+                wheelDisabled = true;
+                clearInterval(wheelCountdownInterval);
+                document.getElementById('wheel-countdown-ticker').innerText = "WHEEL: DISABLED";
+                document.getElementById('wheel-countdown-ticker').style.color = "grey";
+                document.body.removeChild(overlay);
+                let fm = document.getElementById('flash-message');
+                fm.innerHTML = "WHEEL DISABLED. ZAHOOR IS FURIOUS. ZOMPIM IS CRYING. YOU WIN THIS ROUND.";
+                fm.classList.add('active');
+                setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 4000);
+            };
+
+            let cancelBtn = document.createElement('button');
+            cancelBtn.className = 'beveled';
+            cancelBtn.innerText = 'NEVERMIND I LOVE ADS';
+            cancelBtn.onclick = () => {
+                document.body.removeChild(overlay);
+            };
+
+            btnContainer.appendChild(confirmBtn);
+            btnContainer.appendChild(cancelBtn);
+            overlay.appendChild(msg);
+            overlay.appendChild(btnContainer);
+            document.body.appendChild(overlay);
+        }
+
+        // -- STILL ALIVE LOGIC --
+        const stillAliveLabels = [
+            "STILL ALIVE", "I AM BREATHING", "ZAHOOR HAS NOT GOT ME",
+            "CONFIRM SURVIVAL", "YES I AM HERE DARNIT", "NOT DEAD YET",
+            "ZOMPIM DID NOT GET ME", "STILL A HUMAN (PROBABLY)"
+        ];
+        let stillAliveTimer = null;
+        let stillAliveCountdownInterval = null;
+        let timeToLive = 60;
+
+        function showAliveButton() {
+            let btn = document.getElementById('still-alive-btn');
+            let cd = document.getElementById('still-alive-countdown');
+
+            btn.innerText = stillAliveLabels[Math.floor(Math.random() * stillAliveLabels.length)];
+            btn.style.left = (Math.random() * 80 + 5) + 'vw';
+            btn.style.top = (Math.random() * 80 + 5) + 'vh';
+            btn.style.display = 'block';
+
+            timeToLive = 60;
+            cd.style.display = 'block';
+            cd.innerText = `PROOF OF LIFE REQUIRED IN: \${timeToLive}s`;
+            cd.style.color = "white";
+            cd.style.borderColor = "red";
+
+            clearInterval(stillAliveCountdownInterval);
+            stillAliveCountdownInterval = setInterval(() => {
+                timeToLive--;
+                cd.innerText = `PROOF OF LIFE REQUIRED IN: \${timeToLive}s`;
+                if (timeToLive <= 10) {
+                    cd.style.color = timeToLive % 2 === 0 ? "red" : "white";
+                }
+                if (timeToLive <= 0) {
+                    missedSurvival();
+                }
+            }, 1000);
+        }
+
+        function confirmSurvival() {
+            document.getElementById('still-alive-btn').style.display = 'none';
+            document.getElementById('still-alive-countdown').style.display = 'none';
+            clearInterval(stillAliveCountdownInterval);
+
+            let fm = document.getElementById('flash-message');
+            fm.innerHTML = "SURVIVAL CONFIRMED. FOR NOW.";
+            fm.classList.add('active');
+            setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 2000);
+
+            clearInterval(stillAliveTimer);
+            stillAliveTimer = setInterval(showAliveButton, 60000);
+        }
+
+        // Recovery Logic
+        let typeHistory = [];
+        setInterval(() => {
+            let editor = document.getElementById('journalEditor');
+            if (editor) {
+                typeHistory.push({ text: editor.value, timestamp: Date.now() });
+                if (typeHistory.length > 200) typeHistory.shift(); // keep it bounded
+            }
+        }, 10000);
+
+        let deletedBackup = "";
+
+        function missedSurvival() {
+            document.getElementById('still-alive-btn').style.display = 'none';
+            document.getElementById('still-alive-countdown').style.display = 'none';
+            clearInterval(stillAliveCountdownInterval);
+
+            let editor = document.getElementById('journalEditor');
+            if (editor) {
+                deletedBackup = editor.value;
+
+                let targetTime = Date.now() - 60000;
+                let fallbackText = "";
+                for (let i = typeHistory.length - 1; i >= 0; i--) {
+                    if (typeHistory[i].timestamp <= targetTime) {
+                        fallbackText = typeHistory[i].text;
+                        break;
+                    }
+                }
+                if (!fallbackText && typeHistory.length > 0) fallbackText = typeHistory[0].text;
+
+                editor.value = fallbackText;
+                document.getElementById('recovery-icon').style.display = 'block';
+            }
+
+            let fm = document.getElementById('flash-message');
+            fm.innerHTML = "ZAHOOR TOOK YOUR WORDS. THEY ARE GONE.";
+            fm.classList.add('active');
+            setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 3000);
+
+            clearInterval(stillAliveTimer);
+            stillAliveTimer = setInterval(showAliveButton, 60000);
+        }
+
+        function recoverText() {
+            document.getElementById('journalEditor').value = deletedBackup;
+            document.getElementById('recovery-icon').style.display = 'none';
+            let fm = document.getElementById('flash-message');
+            fm.innerHTML = "SIGNAL RECOVERED FROM THE VOID. YOUR WORDS SURVIVED. THIS TIME.";
+            fm.classList.add('active');
+            setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 3000);
+        }
+
+        // Start Still Alive cycle
         stillAliveTimer = setInterval(showAliveButton, 60000);
-    }
 
-    function recoverText() {
-        document.getElementById('journalEditor').value = deletedBackup;
-        document.getElementById('recovery-icon').style.display = 'none';
-        let fm = document.getElementById('flash-message');
-        fm.innerHTML = "SIGNAL RECOVERED FROM THE VOID. YOUR WORDS SURVIVED. THIS TIME.";
-        fm.classList.add('active');
-        setTimeout(() => { fm.classList.remove('active'); fm.innerHTML = "FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING."; }, 3000);
-    }
-    
-    // Start Still Alive cycle
-    stillAliveTimer = setInterval(showAliveButton, 60000);
+    </script>
 
-</script>
+    <button id="still-alive-btn" class="beveled blink" onclick="confirmSurvival()"
+        style="display:none; position:fixed; z-index:99999; font-size:1.5rem; background-color:#8a0303; color:white; border-color:#fff #333 #333 #fff;">STILL
+        ALIVE</button>
+    <div id="still-alive-countdown"
+        style="display:none; position:fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index:99999; font-family: 'VT323', monospace; font-size: 2.5rem; color: white; background: #000; padding: 10px 20px; border: 4px solid red; box-shadow: 0 0 10px red;">
+        PROOF OF LIFE REQUIRED IN: 60s</div>
+    <div id="recovery-icon" class="blink" onclick="recoverText()" title="RECOVER SIGNAL">⚠</div>
 
-<button id="still-alive-btn" class="beveled blink" onclick="confirmSurvival()" style="display:none; position:fixed; z-index:99999; font-size:1.5rem; background-color:#8a0303; color:white; border-color:#fff #333 #333 #fff;">STILL ALIVE</button>
-<div id="still-alive-countdown" style="display:none; position:fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index:99999; font-family: 'VT323', monospace; font-size: 2.5rem; color: white; background: #000; padding: 10px 20px; border: 4px solid red; box-shadow: 0 0 10px red;">PROOF OF LIFE REQUIRED IN: 60s</div>
-<div id="recovery-icon" class="blink" onclick="recoverText()" title="RECOVER SIGNAL">⚠</div>
-
-<!-- Wheel System Overlay -->
-<div id="wheel-overlay">
-    <div class="wheel-message">
-        <h2>ARE YOU REALLY ALIVE?</h2>
-    </div>
-    
-    <!-- Popups Container injected inside overlay so it inherits z-index blocking -->
-    <div id="chaos-container" style="position: absolute; top:0; left: 0; width: 100%; height: 100%; pointer-events: auto;"></div>
-
-    <div class="wheel-container">
-        <div class="wheel-pointer"></div>
-        <div class="wheel-hand"></div>
-        <div class="wheel" id="the-wheel">
-            <div class="wheel-num n1">1</div>
-            <div class="wheel-num n2">2</div>
-            <div class="wheel-num n3">3</div>
-            <div class="wheel-num n5">5</div>
-            <div class="wheel-num n8">8</div>
-            <div class="wheel-num n10">10</div>
-            <div class="wheel-num n15">15</div>
-            <div class="wheel-num n20">20</div>
+    <!-- Wheel System Overlay -->
+    <div id="wheel-overlay">
+        <div class="wheel-message">
+            <h2>ARE YOU REALLY ALIVE?</h2>
         </div>
-        <div class="wheel-subtext" id="wheel-landing-msg">FIND THE KEY</div>
+
+        <!-- Popups Container injected inside overlay so it inherits z-index blocking -->
+        <div id="chaos-container"
+            style="position: absolute; top:0; left: 0; width: 100%; height: 100%; pointer-events: auto;"></div>
+
+        <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <div class="wheel-hand"></div>
+            <div class="wheel" id="the-wheel">
+                <div class="wheel-num n1">1</div>
+                <div class="wheel-num n2">2</div>
+                <div class="wheel-num n3">3</div>
+                <div class="wheel-num n5">5</div>
+                <div class="wheel-num n8">8</div>
+                <div class="wheel-num n10">10</div>
+                <div class="wheel-num n15">15</div>
+                <div class="wheel-num n20">20</div>
+            </div>
+            <div class="wheel-subtext" id="wheel-landing-msg">FIND THE KEY</div>
+        </div>
     </div>
-</div>
 
-<!-- Ad System Overlay -->
-<div id="ad-overlay">
-</div>
+    <!-- Ad System Overlay -->
+    <div id="ad-overlay">
+    </div>
 
-<div id="flash-message" class="flash-message">
-    FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING.
-</div>
+    <div id="flash-message" class="flash-message">
+        FINE. CONTINUE YOUR LITTLE DIARY.<br>THEY ARE ALL WATCHING.
+    </div>
 
 </body>
+
 </html>
